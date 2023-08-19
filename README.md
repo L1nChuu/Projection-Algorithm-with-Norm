@@ -7,11 +7,11 @@ Based on the algorithms of Liu2020 and Thom2015, the code implementation of 1-no
 ## Procedures
 >1.Proj_B1B2.m  
 This function is aimed to solve the optimization problem.
-![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_B1B2.png)    
+![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_S1S2.png)    
 
 >2.Proj_S1S2.m  
 This function is aimed to solve the optimization problem.
-![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_S1S2.png)   
+![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_B1B2.png)   
 
 >3.Proj_B1S2.m
 This function is aimed to solve the optimization problem.
