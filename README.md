@@ -7,11 +7,11 @@ Based on the Quadratic Approximation Secant Bisection  (QASB) Method in Liu2020 
 ## Procedures
 >1.Proj_B1B2.m  
 This function aims to solve the following projection suproblem for a given vector z. 
-![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_S1S2.png)    
+![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_B1B2.png)    
 
 >2.Proj_S1S2.m  
 This function aims to solve the following projection suproblem for a given vector z. 
-![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_B1B2.png)   
+![P1Omega](https://github.com/L1nChuu/Projection-Algorithm-with-Norm/blob/master/Proj_S1S2.png)   
 
 >3.Proj_B1S2.m
 This function aims to solve the following projection suproblem for a given vector z. 
