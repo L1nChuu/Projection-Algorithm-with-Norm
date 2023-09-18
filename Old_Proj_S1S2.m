@@ -1,4 +1,4 @@
-function [flagg,proj] = Proj_S1S2(z,t)
+function [flagg,proj] = Old_Proj_S1S2(z,t)
 % Gradient Projection Method
 % P2_Omega attempts to solve the projection problem:
 % min (||x-z||_2)^2
@@ -16,21 +16,42 @@ vmax=max(abs(z));
 I1=sum(abs(z)>=vmax);
 flagg=0;
 eps=1e-5;%allowable error
-d=z;
-sf=sign(d);
-e_I1=zeros(N,1);
-e_I1(find(abs(d)>=vmax))=1;
 if(I1>T)
-    e_1=[1;zeros(N-1,1)];
-    beta=((I1-T)/(I1-1))^(1/2);
-    alpha=(t-beta)/I1;
-    wz=alpha*e_I1+beta*e_1;
+    %pass;
+    d=z;
+    sf=sign(d);
+    cen=(t/I1).*ones(I1,1);
+    cbound=zeros(I1,1);
+    cbound(1)=t;
+    h=cbound-cen;
+
+    fenzi=1-norm(cen,2)^2;
+    fenmu=norm(h,2)^2;
+    ss=sqrt(fenzi/fenmu);
+    cqiu=cen+ss*h;
+    shz=cqiu;
+    wz=zeros(N,1);
+    k=1;
+    for ii=1:N
+        if(abs(d(ii))>=vmax)
+            wz(ii)=shz(k);
+            k=k+1;
+        end
+    end
     w=wz.*sf;
     flagg=1;
 end
 if(abs(I1-T)<=eps)
-    wz=e_I1*I1^(-1/2);
-    w=wz.*sf;
+    d=z;
+    sf=sign(d);
+    for j=1:N
+        if(abs(d(j))>=vmax)
+            e(j)=1/sqrt(I1);
+        else
+            e(j)=0;
+        end
+    end
+    w=e'.*sf;
     flagg=2;
 end
 if(I1<T)

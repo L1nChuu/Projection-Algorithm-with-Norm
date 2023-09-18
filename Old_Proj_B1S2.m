@@ -1,4 +1,4 @@
-function [flagg,proj] = Proj_B1S2(z,t)
+function [flagg,proj] = Old_Proj_B1S2(z,t)
 % Gradient Projection Method
 % P3_Omega attempts to solve the projection problem:
 % min (||x-z||_2)^2
@@ -30,12 +30,23 @@ if((I1<T) || abs(I1-T)<=eps)
 else
     d=z;
     sf=sign(d);
-    e_I1=zeros(N,1);
-    e_I1(find(abs(d)>=vmax))=1;
-    e_1=[1;zeros(N-1,1)];
-    beta=((I1-T)/(I1-1))^(1/2);
-    alpha=(t-beta)/I1;
-    wz=alpha*e_I1+beta*e_1;
+    cen=(t/I1)*ones(I1,1);
+    cbound=zeros(I1,1);
+    cbound(1)=t;
+    h=cbound-cen;
+    fenzi=1-norm(cen,2)^2;
+    fenmu=norm(h,2)^2;
+    ss=sqrt(fenzi/fenmu);
+    cqiu=cen+ss*h;
+    shz=cqiu;
+    wz=zeros(N,1);
+    k=1;
+    for ii=1:N
+        if(abs(d(ii))>=vmax)
+            wz(ii)=shz(k);
+            k=k+1;
+        end
+    end
     w=wz.*sf;
     flagg=3;
 end
